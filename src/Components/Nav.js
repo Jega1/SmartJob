@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
-
+import {Link} from 'react-router-dom'
 
 
 export default class Nav extends Component {
         render() {
                 return (
                         <div>
-                                        <nav class="menu">
-                                                <h1 class="menu__logo">Smart job</h1>
+                                        <nav className="menu">
+                                                <h1 className="menu__logo">Smart job</h1>
 
-                                                <div class="menu__right">
-                                                        <ul class="menu__list">
-                                                                <li class="menu__list-item"><a class="menu__link menu__link--active" href="#">Home</a></li>
-                                                                <li class="menu__list-item"><a class="menu__link" href="#">About</a></li>
-                                                                <li class="menu__list-item"><a class="menu__link" href="#">Portfolio</a></li>
-                                                                <li class="menu__list-item"><a class="menu__link" href="#">Contact</a></li>
-                                                                <li class="menu__list-item"><a class="menu__link" href="#">Connexion</a></li>
+                                        <div className="menu__right">
+                                                <ul className="menu__list">
+                                                        <li className="menu__list-item"><Link className="menu__link menu__link--active" to="/">Home</Link></li>
+                                                        <li className="menu__list-item"><Link className="menu__link" to="/about">About</Link></li>
+                                                        <li className="menu__list-item"><a className="menu__link" href="#">Portfolio</a></li>
+                                                        <li className="menu__list-item"><a className="menu__link" href="#">Contact</a></li>
+                                                        <li className="menu__list-item"><a className="menu__link" href="#">Connexion</a></li>
                                                         </ul>
 
                                                  </div>

@@ -1,79 +1,105 @@
 import React, { Component } from 'react'
-import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Button, Form, FormGroup, Label, Input, } from 'reactstrap';
+import Api from '../../Services/Api'
 
 export default class CandidatInscription extends Component {
+
+        constructor(props){
+                super(props)
+                this.state = { apiResponse: " " };
+        
+                this.state = {
+                        nom: "",
+                        prenom: "",
+                        post: "",
+                        email: " ",
+                        password: " "
+                }
+                this.api = new Api()
+        }
+
+        handleNomChange = (evt)=>{
+                console.log(evt)
+                this.setState({ nom: evt.target.value});
+        }
+        handlePrenomChange = (evt) => {
+                console.log(evt)
+                this.setState({ prenom: evt.target.value });
+        }
+
+        registerCandidat=(event)=>{
+                event.preventDefault()
+                // console.log(this.state.nom)
+                // console.log(this.state.prenom)
+                const dataCanditat ={
+                        nom: this.state.nom,
+                        prenom: this.state.prenom
+                }
+                this.api.registerCandidat(dataCanditat).then(res => {
+                        console.log("lol")
+                        console.log(res)
+                })
+               
+             
+        }
+
+     
+
+
+
         render() {
                 return (
-                        <div width="80%">
+                        <div>
                                 <h3>Trouvez tous les jobs qu'il vous faut en créant un compte !</h3>
 
-                                <Form>
-                                        <FormGroup row>
-                                                <Label for="exampleEmail" sm={2}>Email</Label>
-                                                <Col sm={10}>
-                                                        <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                                <Form >
+                                        <FormGroup row >
+                                                <Label sm={2}>Nom</Label>
+                                                <Col sm={8}>
+                                                        {/* <Input type="text" name="name"  placeholder="with a placeholder" value={this.state.name} onChange={this.handleChange}/> */}
+                                                        <Input  onChange={this.handleNomChange} type="text" nom={this.state.nom} id="nom" placeholder="Nom" />
                                                 </Col>
                                         </FormGroup>
-                                        <FormGroup row>
-                                                <Label for="examplePassword" sm={2}>Password</Label>
-                                                <Col sm={10}>
-                                                        <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                                       
+                                        <FormGroup row >
+                                                <Label sm={2}>Prenom</Label>
+                                                <Col sm={8}>
+                                                        <Input onChange={this.handlePrenomChange} type="text"prenom={this.state.prenom} id="prenom" placeholder="Prenom" />
                                                 </Col>
                                         </FormGroup>
-                                        <FormGroup row>
-                                                <Label for="exampleSelect" sm={2}>Select</Label>
-                                                <Col sm={10}>
-                                                        <Input type="select" name="select" id="exampleSelect" />
+                                        <FormGroup row >
+                                                <Label sm={2}>Prenom</Label>
+                                                <Col sm={8}>
+                                                        <Input onChange={this.handlePrenomChange} type="text" prenom={this.state.prenom} id="prenom" placeholder="Prenom" />
                                                 </Col>
                                         </FormGroup>
-                                        <FormGroup row>
-                                                <Label for="exampleSelectMulti" sm={2}>Select Multiple</Label>
-                                                <Col sm={10}>
-                                                        <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple />
+
+                                        <FormGroup row >
+                                                <Label sm={2}>Prenom</Label>
+                                                <Col sm={8}>
+                                                        <Input onChange={this.handlePrenomChange} type="text" prenom={this.state.prenom} id="prenom" placeholder="Prenom" />
+                                                </Col>
+                                        </FormGroup>
+
+                                        <FormGroup row >
+                                                <Label sm={2}>Prenom</Label>
+                                                <Col sm={8}>
+                                                        <Input onChange={this.handlePrenomChange} type="text" prenom={this.state.prenom} id="prenom" placeholder="Prenom" />
+                                                </Col>
+                                        </FormGroup>
+
+
+
+
+                                      
+                              
+                                  
+                                        <FormGroup check row>
+                                                <Col sm={{ size: 8, offset: 4 }} >
+                                                        <Button type="submit" onClick={this.registerCandidat}>Submit</Button>
                                                 </Col>
                                         </FormGroup>
                                       
-                                       
-                                           
-                                        <FormGroup tag="fieldset" row>
-                                                <legend className="col-form-label col-sm-2">Radio Buttons</legend>
-                                                <Col sm={10}>
-                                                        <FormGroup check>
-                                                                <Label check>
-                                                                        <Input type="radio" name="radio2" />{' '}
-                                                                        Option one is this and that—be sure to include why it's great
-                                                                 </Label>
-                                                        </FormGroup>
-                                                        <FormGroup check>
-                                                                <Label check>
-                                                                        <Input type="radio" name="radio2" />{' '}
-                                                                        Option two can be something else and selecting it will deselect option one
-                                                                </Label>
-                                                        </FormGroup>
-                                                        <FormGroup check disabled>
-                                                                <Label check>
-                                                                        <Input type="radio" name="radio2" disabled />{' '}
-                                                                        Option three is disabled
-                                                                </Label>
-                                                        </FormGroup>
-                                                </Col>
-                                        </FormGroup>
-                                        <FormGroup row>
-                                                <Label for="checkbox2" sm={2}>Checkbox</Label>
-                                                <Col sm={{ size: 10 }}>
-                                                        <FormGroup check>
-                                                                <Label check>
-                                                                        <Input type="checkbox" id="checkbox2" />{' '}
-                                                                        Check me out
-                                                                 </Label>
-                                                        </FormGroup>
-                                                </Col>
-                                        </FormGroup>
-                                        <FormGroup check row>
-                                                <Col sm={{ size: 10, offset: 2 }}>
-                                                        <Button>Submit</Button>
-                                                </Col>
-                                        </FormGroup>
                                 </Form>
 
                                 
