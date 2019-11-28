@@ -7,6 +7,6 @@ export default class Api {
 
 	registerCandidat(candidat) {
 		// return axios.post(this.url + "/user/registerCandidat", candidat);
-		return axios.post(this.url + "/candi/registerCandidat", candidat);
+		return axios.post(this.url + "/candidat/registerCandidat", candidat);
 	}
 }

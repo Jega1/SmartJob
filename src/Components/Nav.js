@@ -36,7 +36,7 @@ export default class Nav extends Component {
 							</li>
 
 							<li className="menu__list-item">
-								<a className="menu__link" href="#">
+								<a className="menu__link" to="">
 									Contact
 								</a>
 							</li>
@@ -44,11 +44,13 @@ export default class Nav extends Component {
 								<Dropdown isOpen={this.state.open} toggle={this.toggle}>
 									<DropdownToggle caret>Connexion</DropdownToggle>
 									<DropdownMenu>
-										<DropdownItem header>Header</DropdownItem>
 										<Link to="/inscription">
-											<DropdownItem>Créer un compte</DropdownItem>
+											<DropdownItem>Candidature</DropdownItem>
 										</Link>
-										<DropdownItem>Se connecter</DropdownItem>
+
+										<Link to="/registerEntreprise">
+											<DropdownItem>Entreprise</DropdownItem>
+										</Link>
 									</DropdownMenu>
 								</Dropdown>
 							</li>

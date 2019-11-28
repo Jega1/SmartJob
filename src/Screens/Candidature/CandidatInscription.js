@@ -5,7 +5,7 @@ import Api from "../../Services/Api";
 export default class CandidatInscription extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { apiResponse: " " };
+		this.state = { apiResponse: "" };
 
 		this.state = {
 			nom: null,
