@@ -1,27 +1,20 @@
-import React from 'react';
+import React from "react";
 //import CandidatLogin from './Candidature/CandidatLogin'
-import CandidatInscription from './Candidature/CandidatInscription';
+import CandidatInscription from "./Candidature/CandidatInscription";
 
+export default class Home extends React.Component {
+	// constructor(props){
+	//         super(props)
+	// }
 
-export default class Home extends React.Component{
-        // constructor(props){
-        //         super(props)
-        // }
-
-        render(){
-                return (
-                        <div className="Home">
-                                <div>
-
-
-                                        {/* <CandidatLogin /> */}
-                                        <CandidatInscription />
-
-                                </div>
-                        </div>
-                )
-        }
+	render() {
+		return (
+			<div className="Home">
+				<div>
+					{/* <CandidatLogin /> */}
+					{/* <CandidatInscription /> */}
+				</div>
+			</div>
+		);
+	}
 }
-
-
-

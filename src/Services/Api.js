@@ -1,16 +1,12 @@
-import axios from 'axios'
+import axios from "axios";
 
+export default class Api {
+	constructor() {
+		this.url = "http://localhost:3001";
+	}
 
-export default class Api  {
-
-        constructor() {
-                this.url = 'http://localhost:3005/users/'
-        }
-
-
-        registerCandidat(cd) {
-                 return axios.post(this.url +"registerCandidat",  cd)
-        }
-
-
+	registerCandidat(candidat) {
+		// return axios.post(this.url + "/user/registerCandidat", candidat);
+		return axios.post(this.url + "/candi/registerCandidat", candidat);
+	}
 }
