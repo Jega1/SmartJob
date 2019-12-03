@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+//import { Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import {
 	Container,
 	Col,
@@ -9,15 +10,12 @@ import {
 	Input,
 	Button
 } from "reactstrap";
-import SearchBar  from '../../Components/SearchBar';
 
-
-export default class CandidatLogin extends Component {
+export default class EnterpriseLogin extends Component {
 	render() {
 		return (
 			<Container>
-				<SearchBar/>
-				<h2>Sign In</h2>
+				<h2>Sign In entreprise</h2>
 				<Form className="form">
 					<Col>
 						<FormGroup>
@@ -43,8 +41,8 @@ export default class CandidatLogin extends Component {
 					</Col>
 					<Button>Submit</Button>
 
-					<Link className="" to="/inscription">
-						Créer un compte
+					<Link className="" to="/registerEntreprise">
+						Créer un compte enterprise
 					</Link>
 				</Form>
 			</Container>

@@ -6,7 +6,7 @@ import {
 	DropdownMenu,
 	DropdownItem
 } from "reactstrap";
-import { Col, Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
+//import { Col, Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 
 export default class Nav extends Component {
 	state = {
@@ -36,19 +36,26 @@ export default class Nav extends Component {
 							</li>
 
 							<li className="menu__list-item">
-								<a className="menu__link" to="">
-									Contact
-								</a>
+								<Link className="menu__link" to="/about">
+									contact
+								</Link>
 							</li>
+
 							<li className="menu__list-item">
 								<Dropdown isOpen={this.state.open} toggle={this.toggle}>
 									<DropdownToggle caret>Connexion</DropdownToggle>
 									<DropdownMenu>
-										<Link to="/inscription">
+										<Link to="/CandidatLogin">
 											<DropdownItem>Candidature</DropdownItem>
 										</Link>
 
-										<Link to="/registerEntreprise">
+										{/* <Link to="/registerEntreprise">
+											<DropdownItem>Entreprise</DropdownItem>
+										</Link> */}
+										<Link to="/registerAnnounce">
+											<DropdownItem>Announce</DropdownItem>
+										</Link>
+										<Link to="/EntrepriseLogin">
 											<DropdownItem>Entreprise</DropdownItem>
 										</Link>
 									</DropdownMenu>
@@ -57,28 +64,6 @@ export default class Nav extends Component {
 						</ul>
 					</div>
 				</nav>
-
-				{/* <p>List Based</p>
-                                <Nav>
-                                        <NavItem>
-                                                <NavLink href="#">Link</NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                                <NavLink href="#">Link</NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                                <NavLink href="#">Another Link</NavLink>
-                                        </NavItem>
-                                        <NavItem>
-                                                <NavLink disabled href="#">Disabled Link</NavLink>
-                                        </NavItem>
-                                </Nav>
-                                <hr />
-                                <p>Link Based</p>
-                                <Nav>
-                                        <NavLink href="#">Link</NavLink> <NavLink href="#">Link</NavLink> <NavLink href="#">Another Link</NavLink> <NavLink disabled href="#">Disabled Link</NavLink>
-                                </Nav>
-                         */}
 			</div>
 		);
 	}

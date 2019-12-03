@@ -6,22 +6,41 @@ export default class EnterpriseRegister extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { ApiReponse: "" };
+		this.state = { apiResponse: "" };
 
 		this.state = {
-			nom: "",
-			ref: "",
-			lieu: "",
-			email: "",
-			password: ""
+			nom: null,
+			ref: null,
+			lieu: null,
+			email: null,
+			password: null,
+			date: new Date(),
+			loading: false,
+			message: null
 		};
 		//pourquoi ici on intencie api
 		this.api = new Api();
 	}
 
+	handleInputChange = event => {
+		this.setState({ [event.target.name]: event.target.value });
+	};
+
+	registerEnterprise = event => {
+		event.preventDefault();
+		this.setState({ loading: true });
+
+		this.api.registerEnterprise(this.state).then(res => {
+			console.log(res.data);
+			this.setState({ loading: false, message: res.data.message });
+		});
+	};
+
 	render() {
 		return (
 			<div>
+				<h3>Trouvez tous les candidature !</h3>
+
 				<Form>
 					<FormGroup row>
 						<Label sm={2}>Nom</Label>
@@ -29,7 +48,7 @@ export default class EnterpriseRegister extends Component {
 							<Input
 								onChange={this.handleInputChange}
 								type="text"
-								value={this.state.email}
+								value={this.state.nom}
 								name="nom"
 								placeholder="Nom d'entreprise"
 							/>
@@ -55,7 +74,7 @@ export default class EnterpriseRegister extends Component {
 								type="text"
 								value={this.state.lieu}
 								name="lieu"
-								placeholder="Nom d'entreprise"
+								placeholder="lieu d'entreprise"
 							/>
 						</Col>
 					</FormGroup>
@@ -83,6 +102,21 @@ export default class EnterpriseRegister extends Component {
 							/>
 						</Col>
 					</FormGroup>
+
+					<FormGroup check row>
+						<Col sm={{ size: 8, offset: 4 }}>
+							<Button
+								type="submit"
+								onClick={this.registerEnterprise}
+								disabled={this.state.loading}
+							>
+								Submit
+							</Button>
+						</Col>
+					</FormGroup>
+					{this.state.message ? (
+						<Alert color="success">{this.state.message}</Alert>
+					) : null}
 				</Form>
 			</div>
 		);

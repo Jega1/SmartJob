@@ -2,19 +2,20 @@ import React, { Component } from "react";
 import { Col, Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import Api from "../../Services/Api";
 
-export default class CandidatInscription extends Component {
+export default class CreateAnnounce extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { apiResponse: "" };
 
 		this.state = {
-			nom: null,
-			prenom: null,
 			poste: null,
-			email: null,
-			password: null,
 			ville: null,
+			discription: null,
 			date: new Date(),
+			dateCreation: {
+				type: Date,
+				default: new Date()
+			},
 			loading: false,
 			message: null
 		};
@@ -26,11 +27,11 @@ export default class CandidatInscription extends Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	registerCandidat = event => {
+	registerAnnounce = event => {
 		event.preventDefault();
 		this.setState({ loading: true });
 
-		this.api.registerCandidat(this.state).then(res => {
+		this.api.registerAnnounce(this.state).then(res => {
 			console.log(res.data);
 			this.setState({ loading: false, message: res.data.message });
 		});
@@ -39,47 +40,9 @@ export default class CandidatInscription extends Component {
 	render() {
 		return (
 			<div>
-				<h3>Trouvez tous les jobs qu'il vous faut en créant un compte !</h3>
+				<h3>Create a annonce</h3>
 
 				<Form>
-					<FormGroup row>
-						<Label sm={2}>Email</Label>
-						<Col sm={8}>
-							<Input
-								onChange={this.handleInputChange}
-								type="email"
-								value={this.state.email}
-								name="email"
-								placeholder="Email"
-							/>
-						</Col>
-					</FormGroup>
-
-					<FormGroup row>
-						<Label sm={2}>Nom</Label>
-						<Col sm={8}>
-							<Input
-								onChange={this.handleInputChange}
-								type="text"
-								value={this.state.nom}
-								name="nom"
-								placeholder="Nom"
-							/>
-						</Col>
-					</FormGroup>
-
-					<FormGroup row>
-						<Label sm={2}>Prenom</Label>
-						<Col sm={8}>
-							<Input
-								onChange={this.handleInputChange}
-								type="text"
-								value={this.state.prenom}
-								name="prenom"
-								placeholder="Prenom"
-							/>
-						</Col>
-					</FormGroup>
 					<FormGroup row>
 						<Label sm={2}>Poste</Label>
 						<Col sm={8}>
@@ -107,14 +70,14 @@ export default class CandidatInscription extends Component {
 					</FormGroup>
 
 					<FormGroup row>
-						<Label sm={2}>Mot de passe</Label>
+						<Label sm={2}>Discription</Label>
 						<Col sm={8}>
 							<Input
 								onChange={this.handleInputChange}
-								type="password"
-								value={this.state.password}
-								name="password"
-								placeholder="Mot de passe"
+								type="text"
+								value={this.state.description}
+								name="description"
+								placeholder="description"
 							/>
 						</Col>
 					</FormGroup>
@@ -123,7 +86,7 @@ export default class CandidatInscription extends Component {
 						<Col sm={{ size: 8, offset: 4 }}>
 							<Button
 								type="submit"
-								onClick={this.registerCandidat}
+								onClick={this.registerAnnounce}
 								disabled={this.state.loading}
 							>
 								Submit
